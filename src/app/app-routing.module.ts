@@ -1,28 +1,27 @@
-import { AuthenticationGuard } from '@core/guards/authentication.guard';
-import { ShellComponent } from './shell/components/shell/shell.component';
-import { PageNotFoundComponent } from '@shell/components/page-not-found/page-not-found.component';
-import { LoginComponent } from '@shell/components/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CustomPreloaderStrategy } from '@core/custom-preloader-strategy';
+import { PageNotFoundComponent } from './shell/components/page-not-found/page-not-found.component';
+import { LoginComponent } from './shell/components/login/login.component';
+import { AuthenticationGuard } from './core/guards/authentication.guard';
+import { MainComponent } from './shell/components/main/main.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ShellComponent,
+    component: MainComponent,
     canActivate: [AuthenticationGuard],
     children: [
       {
-        path: 'home',
+        path: 'dashboard',
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(mod => mod.DashboardModule),
         data: { preload: true }
       },
-      {
-        path: 'user',
-        loadChildren: () => import('./modules/user/user.module').then(mod => mod.UserModule),
-      },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      // {
+      //   path: 'user',
+      //   loadChildren: () => import('./modules/user/user.module').then(mod => mod.UserModule),
+      // },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   },
   { path: 'login', component: LoginComponent },
@@ -30,16 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-      routes,
-      {
-        preloadingStrategy: CustomPreloaderStrategy,
-        // enableTracing: !environment.production
-      }
-    )
-  ],
-  exports: [RouterModule],
-  providers: [CustomPreloaderStrategy]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -18,7 +18,6 @@
       "dom"
     ],
     "paths": {
-      "@app/*": ["src/app/*"],
       "@core": ["src/app/core"],
       "@core/*": ["src/app/core/*"],
       "@shared": ["src/app/shared"],
@@ -27,7 +26,8 @@
       "@shell/*": ["src/app/shell/*"],
       "@i18n/*": ["src/app/i18n/*"],
       "@env/*": ["src/environments/*"],
-      "@translation/*": ["src/translations/*"]
+      "@translation/*": ["src/translations/*"],
+      "@app/*": ["src/app/*"],
     }
   }
 }

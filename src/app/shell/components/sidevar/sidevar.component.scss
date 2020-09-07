@@ -1,0 +1,16 @@
+@import "variables";
+
+mat-sidenav-container {
+    padding: 10px;
+    background-color: mat-color($arcadlab-background);
+}
+
+mat-sidenav-content {
+    background-color: mat-color($arcadlab-background);
+}
+
+.mat-list-single-selected-option {
+    background-color: mat-color($arcadlab-accent, 100);
+    color: mat-color($arcadlab-accent, 400);
+    font-weight: 500;
+}

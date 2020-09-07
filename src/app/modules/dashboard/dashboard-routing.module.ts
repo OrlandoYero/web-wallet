@@ -1,13 +1,14 @@
-import { extract } from '@i18n/services/i18n.service';
-import { HomeComponent } from './components/home/home.component';
+import { ViewComponent } from './page/view/view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { extract } from '@i18n/services/i18n.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    data: { title: extract('Home') }
+    component: ViewComponent,
+    data: { title: extract('HOME.TITLE') }
   },
 ];
 

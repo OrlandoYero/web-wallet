@@ -4,7 +4,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Logger } from '@core/services/logger.service';
+import { Logger } from '../services/logger.service';
 import { environment } from '@env/environment';
 
 const log = new Logger('ErrorHandlerInterceptor');

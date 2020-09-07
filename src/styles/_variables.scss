@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$arcadlab-primary: mat-palette($mat-indigo, 900);
+$arcadlab-accent: mat-palette($mat-blue, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$arcadlab-warn: mat-palette($mat-red);
+
+$arcadlab-background: mat-palette($mat-grey, 300);

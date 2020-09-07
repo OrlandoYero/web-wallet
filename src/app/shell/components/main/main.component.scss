@@ -1,0 +1,9 @@
+@import 'variables';
+
+#content {
+    height: 90.6vh;
+}
+
+#app-body {
+    background-color: mat-color($arcadlab-background, 300)!important;
+}

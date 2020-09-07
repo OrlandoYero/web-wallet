@@ -1,10 +1,11 @@
+import { TranslateException } from './../util/translate-exception';
 import { Injectable } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 import { Logger } from '@core/services/logger.service';
-import * as enUS from '../translations/en-US.json';
-import * as es from '../translations/es.json';
+import * as en from '../translations/langs/en.json';
+import * as es from '../translations/langs/es.json';
 
 const log = new Logger('I18nService');
 const languageKey = 'language';
@@ -30,8 +31,10 @@ export class I18nService {
 
   constructor(private translateService: TranslateService) {
     // Embed languages to avoid extra HTTP requests
-    translateService.setTranslation('en-US', enUS);
-    translateService.setTranslation('es', es);
+    log.debug('object', Object.assign({}, en['default'], TranslateException.getException('arcad', 'en')));
+    translateService.setTranslation('en', Object.assign({}, en['default'], TranslateException.getException('arcad', 'en')));
+    translateService.setTranslation('es', es['default']);
+    translateService.use('en');
   }
 
   /**
@@ -40,10 +43,12 @@ export class I18nService {
    * @param defaultLanguage The default language to use.
    * @param supportedLanguages The list of supported languages.
    */
-  init(defaultLanguage: string, supportedLanguages: string[]): void {
+  init(defaultLanguage: string, supportedLanguages: string[], portal: string = ''): void {
     this.defaultLanguage = defaultLanguage;
     this.supportedLanguages = supportedLanguages;
     this.language = '';
+
+    log.debug('Initializing i18n');
 
     // Warning: this subscription will always be alive for the app's lifetime
     this.langChangeSubscription = this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
