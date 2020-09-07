@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -39,6 +40,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     FlexLayoutModule,
+    TranslateModule,
 
     MatCheckboxModule,
     MatButtonModule,
@@ -73,6 +75,7 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   exports: [
     FlexLayoutModule,
+    TranslateModule,
 
     MatCheckboxModule,
     MatButtonModule,

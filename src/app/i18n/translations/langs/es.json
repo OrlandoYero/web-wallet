@@ -1,8 +1,5 @@
 {
     "APP": {
-        "ARCAD": "Es Arcadlab"
-    },
-    "HOME": {
-        "TITLE": "Inicio"
+        "HOME": "Wallet"
     }
 }
